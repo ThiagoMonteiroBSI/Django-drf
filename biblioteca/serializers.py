@@ -1,6 +1,7 @@
 from rest_framework.serializers import ModelSerializer
 
-from biblioteca.models import Categoria, Editora
+from biblioteca.models import Categoria, Editora, Autor, Livro
+
 
 class CategoriaSerializer(ModelSerializer):
     class Meta:
@@ -11,3 +12,24 @@ class EditoraSerializer(ModelSerializer):
     class Meta:
         model = Editora
         fields = "__all__"
+
+class AutorSerializer(ModelSerializer):
+    class Meta:
+        model = Autor
+        fields = "__all__"
+
+class LivroSerializer(ModelSerializer):
+    class Meta:
+        model = Livro
+        fields = "__all__"
+
+class LivroDetailSerializer(ModelSerializer):
+    class Meta:
+        model = Livro
+        fields = "__all__"
+        depth = 1 #mostra o nome da editora no livro ao inves do id da editora
+
+class LivroListSerializer(ModelSerializer):
+    class Meta:
+        model = Livro
+        fields = ["id", "titulo", "preco"]
